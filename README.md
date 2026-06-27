@@ -207,68 +207,64 @@ slt translate --model-code rule-based --text-lang urdu --sign-lang pk-sl --sign-
 ## Languages
 
 <div>
-<summary><b>Text Languages</b></summary>
+<summary><b>Linguagem de texto</b></summary>
 
-Available Functions:
+Funções disponível:
 
-- Text Normalization
-- Tokenization (word, phrase & sentence)
-- Token Classification (Tagging)
-- Word Sense Disambiguation
+- Normalização de texto
+- "Tokenização" (palavras, frases & sentenças)
+- Classificação de tokens (Marcação)
+- Desambiguação do significado de palavras
 
-| Name                                                                                                                                         | Vocabulary         | Ambiguous tokens | Signs |
-| -------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ | ---------------- | ----- |
-| [English](https://github.com/sign-language-translator/sign-language-translator/blob/main/sign_language_translator/languages/text/english.py) | 1591 words+phrases | 167              | 776   |
-| [Urdu](https://github.com/sign-language-translator/sign-language-translator/blob/main/sign_language_translator/languages/text/urdu.py)       | 2080 words+phrases | 227              | 776   |
-| [Hindi](https://github.com/sign-language-translator/sign-language-translator/blob/main/sign_language_translator/languages/text/hindi.py)     | 137 words+phrases  | 5                | 84    |
-
-</div>
-
-<div>
-<summary><b>Sign Languages</b></summary>
-
-Available Functions:
-
-- Word & phrase mapping to signs
-- Sentence restructuring according to grammar
-- Sentence simplification (drop stopwords)
-
-| Name                                                                                                                                                                       | Vocabulary | Dataset  |                                    Parallel Corpus                                     |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | -------- | :------------------------------------------------------------------------------------: |
-| [Pakistan Sign Language](https://github.com/sign-language-translator/sign-language-translator/blob/main/sign_language_translator/languages/sign/pakistan_sign_language.py) | 776        | 23 hours | [details](https://github.com/sign-language-translator/sign-language-datasets#datasets) |
-
-</div>
-
-## Models
-
-<div>
-<summary><b>Translation</b>: Text to sign Language</summary>
-
-<!-- [Available Trained models]() -->
-
-| Name                                                                                                                                                                              | Architecture        | Description                                                                                                                                            | Input  | Output                     | Web Demo                                                                                                                                                                  |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------ | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Concatenative Synthesis](https://github.com/sign-language-translator/sign-language-translator/blob/main/sign_language_translator/models/text_to_sign/concatenative_synthesis.py) | Rules + Hash Tables | The Core Rule-Based translator mainly used to synthesize translation dataset.<br/>Initialize it using TextLanguage, SignLanguage & SignFormat objects. | string | slt.Video \| slt.Landmarks | [![Open in Spaces](https://huggingface.co/datasets/huggingface/badges/resolve/main/open-in-hf-spaces-sm.svg)](https://huggingface.co/spaces/sltAI/ConcatenativeSynthesis) |
+| Nome                                                                                                                                      | Vocabulario          | Token ambíguo | Sinais |
+| ----------------------------------------------------------------------------------------------------------------------------------------- | -------------------- | ------------- | ------ |
+| [English](https://github.com/Brenokluck/projeto-univille-tradutor-de-sinais/blob/main/sign_language_translator/languages/text/english.py) | 1591 palavras+frases | 167           | 776    |
+| [Urdu](https://github.com/Brenokluck/projeto-univille-tradutor-de-sinais/blob/main/sign_language_translator/languages/text/urdu.py)       | 2080 palavras+frases | 227           | 776    |
+| [Hindi](https://github.com/Brenokluck/projeto-univille-tradutor-de-sinais/blob/main/sign_language_translator/languages/text/hindi.py)     | 137 palavras+frases  | 5             | 84     |
 
 </div>
 
 <div>
-<summary><b>Sign Embedding/Feature extraction</b>:</summary>
+<summary><b>Linguagem de sinais</b></summary>
 
-<!-- [Available Trained models]() -->
+Funções disponível:
 
-| Name                                                                                                                                                                                                 | Architecture                                                                                                               | Description                                                                                       | Input format                                                 | Output format                                 |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ | --------------------------------------------- |
-| [MediaPipe Landmarks<br>(Pose + Hands)](https://github.com/sign-language-translator/sign-language-translator/blob/main/sign_language_translator/models/video_embedding/mediapipe_landmarks_model.py) | CNN based pipelines. See Here: [Pose](https://arxiv.org/pdf/2006.10204.pdf), [Hands](https://arxiv.org/pdf/2006.10214.pdf) | Encodes videos into pose vectors (3D world or 2D image) depicting the movements of the performer. | List of numpy images<br/>(n_frames, height, width, channels) | torch.Tensor<br/>(n_frames, n_landmarks \* 5) |
+- Correspondência entre palavras e expressões e sinais
+- Reestruturação de frases de acordo com as regras gramaticais
+- Simplificação de frases (eliminação de palavras vazias)
+
+| Name                                                                                                                                                                       | Vocabulario | Dataset  |                                     Parallel Corpus                                     |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- | -------- | :-------------------------------------------------------------------------------------: |
+| [Pakistan Sign Language](https://github.com/sign-language-translator/sign-language-translator/blob/main/sign_language_translator/languages/sign/pakistan_sign_language.py) | 776         | 23 hours | [detalhes](https://github.com/sign-language-translator/sign-language-datasets#datasets) |
+
+</div>
+
+## Modelos
+
+<div>
+<summary><b>Traduções</b>: Linguagem texto para sinais </summary>
+
+| Nome                                                                                                                                                                              | Arquitetura           | Descrição                                                                                                                                                                                         | Input  | Output                     |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ | -------------------------- |
+| [Concatenative Synthesis](https://github.com/sign-language-translator/sign-language-translator/blob/main/sign_language_translator/models/text_to_sign/concatenative_synthesis.py) | Regras + Tabelas Hash | O tradutor baseado em regras principal, utilizado principalmente para sintetizar o conjunto de dados de tradução.<br/>Inicialize-o utilizando os objetos TextLanguage, SignLanguage e SignFormat. | string | slt.Video \| slt.Landmarks |
 
 </div>
 
 <div>
-<summary><b>Data generation</b>: Language Models</summary>
+<summary><b>Incorporação de sinais/Extração de características</b>:</summary>
 
-[Available Trained models](https://github.com/sign-language-translator/sign-language-datasets/releases/tag/v0.0.1)
+| Nome                                                                                                                                                                                                 | Arquitetura                                                                                                      | Descrição                                                                                               | Formato do Input                                               | Formato do Output                             |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------- | --------------------------------------------- |
+| [MediaPipe Landmarks<br>(Pose + Hands)](https://github.com/sign-language-translator/sign-language-translator/blob/main/sign_language_translator/models/video_embedding/mediapipe_landmarks_model.py) | CNN based pipelines: [Pose](https://arxiv.org/pdf/2006.10204.pdf), [Hands](https://arxiv.org/pdf/2006.10214.pdf) | Codifica vídeos em vetores de pose (mundo 3D ou imagem 2D) que representam os movimentos do intérprete. | Lista de imagens numpy<br/>(n_frames, altura, largura, canais) | torch.Tensor<br/>(n_frames, n_landmarks \* 5) |
 
-| Name                                                                                                                                                                                             | Architecture                    | Description                                                                                         | Input format                                                | Output format                                                                 |
+</div>
+
+<div>
+<summary><b>Geração de dados</b>: Modelos de linguagens</summary>
+
+[Modelos disponível](https://github.com/sign-language-translator/sign-language-datasets/releases/tag/v0.0.1)
+
+| Nome                                                                                                                                                                                             | Arquitetura                     | Descrição                                                                                           | Formato do Input                                            | Formato do Output                                                             |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------- | --------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------------------------- |
 | [N-Gram Langauge Model](https://github.com/sign-language-translator/sign-language-translator/blob/main/sign_language_translator/models/language_models/ngram_language_model.py)                  | Hash Tables                     | Predicts the next token based on learned statistics about previous N tokens.                        | List of tokens                                              | (token, probability)                                                          |
 | [Transformer Language Model](https://github.com/sign-language-translator/sign-language-translator/blob/main/sign_language_translator/models/language_models/transformer_language_model/model.py) | Decoder-only Transformers (GPT) | Predicts next token using query-key-value attention, linear transformations and soft probabilities. | torch.Tensor<br/>(batch, token_ids)<br/><br/>List of tokens | torch.Tensor<br/>(batch, token_ids, vocab_size)<br/><br/>(token, probability) |
