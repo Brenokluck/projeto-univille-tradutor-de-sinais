@@ -44,134 +44,96 @@ Linguagem de sinais para texto
 </li>
 
 <li>
-<details>
+<div>
 <summary>
-Text to Sign Language
+Texto para Linguagem de sinais
 </summary>
 
-There are two approaches to this problem:
+Existem duas abordagens para este problema:
 
-1. Rule Based Concatenation
+1. Concatenação baseada em regras
 
-   1. Label a Sign Language Dictionary with all word tokens that can be mapped to those signs. See our mapping format [here](https://github.com/sign-language-translator/sign-language-datasets/blob/main/parallel_texts/pk-dictionary-mapping.json).
-   2. Parse the input text and play appropriate video clips for each token.
-      1. Build a text processor by inheriting `slt.languages.TextLanguage` (see [`slt.languages.text`](https://github.com/sign-language-translator/sign-language-translator/tree/main/sign_language_translator/languages/text) sub-package for details)
-      2. Map the text grammar & words to sign language by inheriting `slt.languages.SignLanguage` (see [`slt.languages.sign`](https://github.com/sign-language-translator/sign-language-translator/tree/main/sign_language_translator/languages/sign) sub-package for details)
-      3. Use our rule-based model [`slt.models.ConcatenativeSynthesis`](https://github.com/sign-language-translator/sign-language-translator/blob/main/sign_language_translator/models/text_to_sign/concatenative_synthesis.py) for translation.
-   3. It is faster but the **word sense has to be disambiguated** in the input. See the deep learning approach to automatically handle ambiguous words & **words not in dictionary**.
+   1. Rotular um dicionário de linguagem gestual com todos os tokens de palavras que possam ser mapeados para esses gestos.
+   2. Analise o texto de entrada e reproduza os videoclipes adequados para cada token.
+      1. Crie um processador de texto herdando de `slt.languages.TextLanguage` (consulte o subpacote [`slt.languages.text`](https://github.com/Brenokluck/projeto-univille-tradutor-de-sinais/tree/main/sign_language_translator/languages/text) para mais detalhes)
+      2. Mapeie a gramática e as palavras do texto para a língua gestual, herdando de `slt.languages.SignLanguage` (consulte o subpacote [`slt.languages.sign`](https://github.com/Brenokluck/projeto-univille-tradutor-de-sinais/tree/main/sign_language_translator/languages/sign) para mais detalhes)
+      3. Utilize o nosso modelo baseado em regras [`slt.models.ConcatenativeSynthesis`](https://github.com/Brenokluck/projeto-univille-tradutor-de-sinais/blob/main/sign_language_translator/models/text_to_sign/concatenative_synthesis.py) para a tradução.
+   3. É mais rápido, mas o **significado das palavras tem de ser desambiguado** na entrada. Consulte a abordagem de aprendizagem profunda para lidar automaticamente com palavras ambíguas e **palavras que não constam no dicionário**.
 
-2. Deep learning (seq2seq)
-   1. Either generate the sequence of filenames that should be concatenated <!-- TODO: `slt.models.mGlossBART` -->
-      1. you will need a [parallel corpus](https://github.com/sign-language-translator/sign-language-datasets/blob/main/parallel_texts/pk-sentence-mapping.json) of normal text sentences against sign language gloss (sign sequence written word-for-word)
-   2. Or synthesize the signs directly by using a pre-trained multilingual text encoder and
-      1. a GAN or diffusion model or decoder to synthesize a sequence of pose vectors (`shape = (time, num_landmarks * num_coordinates)`) <!-- TODO: `slt.models.SignPoseGAN` -->
-         1. Move an Avatar with those pose vectors (Easy) <!-- TODO: `slt.models.Avatar` -->
-         2. Use motion transfer to generate a video (Medium) <!-- TODO: `slt.models.SignMotionTransfer` -->
-         3. Synthesize a video frame for each vector (Difficult) <!-- TODO: `slt.models.DeepPoseToImage` -->
-      2. a video synthesis model (Very Difficult) <!-- TODO: `slt.models.DeepSignVideoGAN` -->
-
-</details>
-</li>
+2. Aprendizagem profunda (seq2seq)
+   1. Gerar a sequência de nomes de ficheiros que devem ser concatenados
+   2. Ou sintetize os sinais diretamente utilizando um codificador de texto multilingue pré-treinado e 1. uma GAN, um modelo de difusão ou um descodificador para sintetizar uma sequência de vetores de pose (`shape = (time, num_landmarks * num_coordinates)`) 1. Mover um avatar com esses vetores de pose (Fácil) 2. Utilizar a transferência de movimento para gerar um vídeo (Médio) 3. Sintetizar um fotograma de vídeo para cada vetor (Difícil) 2. um modelo de síntese de vídeo (Muito difícil)
+   </div>
+   </li>
 
 <li>
-<details>
+<div>
 <summary><b>
-Language Processing
+Processamento de linguagem
 </b></summary>
 
-1. Sign Processing
-   - 3D world landmarks extraction with Mediapipe.
-   - Pose Visualization with matplotlib.
-   - Pose transformations (data augmentation) with scipy.
-2. Text Processing
-   - Normalize text input by substituting unknown characters/spellings with supported words.
-   - Disambiguate context-dependent words to ensure accurate translation.
-     "spring" -> ["spring(water-spring)", "spring(metal-coil)"]
-   - Tokenize text (word & sentence level).
-   - Classify tokens and mark them with Tags.
+1. Processamento de sinais
+   - Extração de pontos de referência do mundo 3D com o Mediapipe.
+   - Visualização de poses com o matplotlib.
+   - Transformações de poses (aumentação de dados) com o scipy.
+2. Processamento de texto
+   - Normalizar a entrada de texto, substituindo caracteres ou grafias desconhecidos por palavras suportadas.
+   - Desambiguar palavras dependentes do contexto para garantir uma tradução precisa.
+     «spring» -> [«spring (manancial)», «spring (mola metálica)»]
+   - Tokenizar o texto (ao nível da palavra e da frase).
+   - Classificar os tokens e marcá-los com etiquetas.
 
-</details>
+</div>
 </li>
 
 <li>
-<details>
+<div>
 <summary><b>
 Datasets
 </b></summary>
 
-For our datasets & conventions, see the [_sign-language-datasets_ repo](https://github.com/sign-language-translator/sign-language-datasets) and its [releases](https://github.com/sign-language-translator/sign-language-datasets/releases).
-See this [documentation](https://slt.readthedocs.io/en/latest/datasets.html) for more on building a dataset of Sign Language videos (or motion capture gloves' output features).
+Para ver o dataset utilizado: [_sign-language-datasets_ repo](https://github.com/sign-language-translator/sign-language-datasets).
+Veja essa [documentaçao](https://slt.readthedocs.io/en/latest/datasets.html) Para saber mais sobre como criar um conjunto de dados de vídeos de língua gestual (ou sobre as características dos dados obtidos através de luvas de captura de movimento).
 
-**Your data should include**:
+**Seus dados deve ser incluidos**:
 
-1. A word level Dictionary (Videos of individual signs & corresponding Text tokens (words & phrases))
-2. Replications of the dictionary. (Set up multiple syncronized cameras and record random people performing the dictionary videos. ([notebook](https://colab.research.google.com/github/sign-language-translator/notebooks/blob/main/data_collection/clip_extractor.ipynb)))
-3. Parallel sentences
-   1. Normal text language sentences against sign language videos. (Use our Language Models to generate sentences composed of dictionary words.)
-   2. Normal text language sentences against the [text gloss](https://github.com/sign-language-translator/sign-language-datasets#glossary) of the corresponding sign language sentence.
-   3. Sign language sentences against their text gloss
-   4. Sign language sentences against translations in multiple text languages
-4. Grammatical rules of the sign language
-   1. Word order (e.g. SUBJECT OBJECT VERB TIME)
-   2. Meaningless words (e.g. "the", "am", "are")
-   3. Ambiguous words (e.g. spring(coil) & spring(water-fountain))
+1. Um dicionário ao nível da palavra (vídeos de sinais individuais e tokens de texto correspondentes (palavras e frases))
+2. Reproduções do dicionário. (Instalar várias câmaras sincronizadas e gravar pessoas aleatórias a reproduzir os vídeos do dicionário. ([notebook](https://colab.research.google.com/github/sign-language-translator/notebooks/blob/main/data_collection/clip_extractor.ipynb)))
+3. Frases paralelas
+   1. Frases em linguagem escrita normal comparadas com vídeos em língua gestual. (Utilizar os nossos modelos linguísticos para gerar frases compostas por palavras do dicionário.)
+   2. Frases em linguagem escrita normal comparadas com a [explicação textual](https://github.com/sign-language-translator/sign-language-datasets#glossary) da frase correspondente em língua gestual.
+   3. Frases em língua gestual comparadas com a sua explicação textual
+   4. Frases em língua gestual comparadas com traduções em várias línguas escritas
+4. Regras gramaticais da língua gestual
+   1. Ordem das palavras (por exemplo, SUJEITO OBJETO VERBO TEMPO)
+   2. Palavras sem significado (por exemplo, «o», «sou», «são»)
+   3. Palavras ambíguas (por exemplo, «mola» (mola de aço) e «mola» (fonte de água))
 
-**Try to incorporate**:
+**Tente incorporar**:
 
-1. Multiple camera angles
-2. Diverse performers to capture all _accents_ of the signs
-3. Uniqueness in labeling of word tokens
-4. Variations in signs for the same concept
+1. Vários ângulos de câmara
+2. Intérpretes diversos para captar todos os _sotaques_ dos sinais
+3. Originalidade na identificação dos tokens de palavras
+4. Variações nos sinais para o mesmo conceito
 
-Try to capture variations in signs in a scalable and diversity accommodating way and enable advancing sign language standardization efforts.
+Procure captar as variações nos sinais de uma forma escalável e que acomode a diversidade, contribuindo assim para o avanço dos esforços de normalização da língua gestual.
 
-</details>
+</div>
 </li>
 </ol>
 
-### Goals
+### Objetivos
 
-1. Enable **integration** of sign language into existing applications.
-2. Assist construction of **custom** solutions for resource poor sign langauges.
-3. Improve **education** quality for the deaf and elevate literacy rates.
-4. Promote communication **inclusivity** of the hearing impaired.
-5. Establish a framework for sign language **standardization**.
+1. Permitir a **integração** da língua gestual nas aplicações existentes.
+2. Apoiar a criação de soluções **personalizadas** para línguas gestuais com poucos recursos.
+3. Melhorar a qualidade da **educação** para as pessoas surdas e aumentar as taxas de alfabetização.
+4. Promover a **inclusão** na comunicação das pessoas com deficiência auditiva.
+5. Estabelecer um quadro para a **normalização** da língua gestual.
 
-## How to install the package
+## Uso
 
-```bash
-pip install sign-language-translator
-```
-
-<details>
-<summary>Editable mode (<code>git clone</code>):</summary>
-
-The package ships with some optional dependencies as well (e.g. deep_translator for synonym finding and mediapipe for a pretrained pose extraction model). Install them by appending `[all]`, `[full]`, `[mediapipe]` or `[synonyms]` to the project name in the command (e.g `pip install sign-langauge-translator[full]`).
-
-```bash
-git clone https://github.com/sign-language-translator/sign-language-translator.git
-cd sign-language-translator
-pip install -e ".[all]"
-```
-
-```bash
-pip install -e git+https://github.com/sign-language-translator/sign-language-translator.git#egg=sign_language_translator
-```
-
-</details>
-
-## Usage
-
-Head over to [slt.**readthedocs**.io](https://slt.readthedocs.io) to see the detailed usage in Python, CLI and gradio GUI.
-See the [_test cases_](https://github.com/sign-language-translator/sign-language-translator/blob/main/tests) or the [_notebooks_ repo](https://github.com/sign-language-translator/notebooks) to see the internal code in action.
-
-### Web GUI
-
-Individual models deployed on HuggingFace Spaces:
-
-[![HuggingFace Spaces](https://img.shields.io/badge/text%20to%20sign-ConcatenativeSynthesis%2BLM-mediumslateblue)](https://huggingface.co/spaces/sltAI/ConcatenativeSynthesis)
-
-<!-- #FF3270 #FFD702 #861FFF #097EFF #10B981 #3B82F6 #6366F1 #F59E0B #EF4444 -->
+Clique e seja direcionado para o [slt.**readthedocs**.io](https://slt.readthedocs.io) para ver mais detalhes de uso em Python, CLI and gradio GUI.
+veja o case de teste em [_test cases_](https://github.com/Brenokluck/projeto-univille-tradutor-de-sinais/tree/main/tests).
 
 ### Python
 
@@ -290,31 +252,7 @@ Available Functions:
 | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------ | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [Concatenative Synthesis](https://github.com/sign-language-translator/sign-language-translator/blob/main/sign_language_translator/models/text_to_sign/concatenative_synthesis.py) | Rules + Hash Tables | The Core Rule-Based translator mainly used to synthesize translation dataset.<br/>Initialize it using TextLanguage, SignLanguage & SignFormat objects. | string | slt.Video \| slt.Landmarks | [![Open in Spaces](https://huggingface.co/datasets/huggingface/badges/resolve/main/open-in-hf-spaces-sm.svg)](https://huggingface.co/spaces/sltAI/ConcatenativeSynthesis) |
 
-<!--                                                                                                                                                                              | [pose-gen]()        | Encoder-Decoder Transformers (Seq2Seq)                                                                                                              | Generates a sequence of pose vectors conditioned on input text. | torch.Tensor<br/>(batch, token_ids) | torch.Tensor<br/>(batch, n_frames, n_landmarks*3) |  | -->
-
 </details>
-
-<!-- <details>
-<summary>Translation: Sign Language to Text</summary>
-
-[Available Trained models]()
-
-| Name        | Architecture                                | Description                                                                                                  | Input format                                             | Output format                       |
-| ----------- | ------------------------------------------- | ------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------- | ----------------------------------- |
-| [gesture]() | CNN+Encoder - Decoder Transformer (seq2seq) | Encodes the pose vectors depicting sign language sentence and generates text conditioned on those encodings. | torch.Tensor<br/>(batch, n_frames=1000, n_landmarks * 3) | torch.Tensor<br/>(batch, token_ids) |
-</details> -->
-
-<!--
-<details>
-<summary>Video: Synthesis/Generation</summary>
-
-[Available Trained models]()
-
-| Name        | Architecture                                | Description                                                                                                  | Input format                                             | Output format                       |
-| ----------- | ------------------------------------------- | ------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------- | ----------------------------------- |
-| [gesture]() | CNN+Encoder - Decoder Transformer (seq2seq) | Encodes the pose vectors depicting sign language sentence and generates text conditioned on those encodings. | torch.Tensor<br/>(batch, n_frames=1000, n_landmarks * 3) | torch.Tensor<br/>(batch, token_ids) |
-</details>
--->
 
 <details>
 <summary><b>Sign Embedding/Feature extraction</b>:</summary>
@@ -349,18 +287,6 @@ Available Functions:
 | [Vector Lookup](https://github.com/sign-language-translator/sign-language-translator/blob/main/sign_language_translator/models/text_embedding/vector_lookup_model.py) | HashTable    | Finds token index and returns the coresponding vector. Tokenizes sentences and computes average vector of known tokens. | string       | torch.Tensor<br/>(n_dim,) |
 
 </details>
-
-<!--
-## Servers
-
-| Name (repository) | Framework | Docker  | Status       |
-| ----------------- | --------- | ------- | ------------ |
-| [slt-models]()    | FastAPI   | [url]() | Coming Soon! |
-| [slt-backend]()   | Django    | [url]() | Coming Soon! |
-| [slt-frontend]()  | React     | [url]() | Coming Soon! |
-
-You can interact with the live version of the above servers at [something.com](https://www.something.com)
--->
 
 ## How to Build a Translator for Sign Language
 
