@@ -30,10 +30,10 @@ Esse projeto foi baseado em um já veemente documentado, veja a documentação a
 
 <ol>
 <li>
-<details>
 <div>
+<summary>
 Linguagem de sinais para texto
-</div>
+</summary>
 
 1. Extrai detalhes de video
    1. veja o [`slt.models.video_embedding`](https://github.com/Brenokluck/projeto-univille-tradutor-de-sinais/tree/main/sign_language_translator/models/video_embedding) sub pacote e p [`$ slt embed`](https://slt.readthedocs.io/en/latest/#embed-videos) comando.
@@ -42,7 +42,7 @@ Linguagem de sinais para texto
 3. Para treinar palavra por palavra em tarefas de redação sobre glossário, utilize também um conjunto de dados sintético criado através da concatenação de sinais para cada palavra de um texto. (veja [`slt.models.ConcatenativeSynthesis`](https://github.com/Brenokluck/projeto-univille-tradutor-de-sinais/blob/main/sign_language_translator/models/text_to_sign/concatenative_synthesis.py))
 4. Ajustar uma rede neural, como, por exemplo, uma proveniente de [`slt.models.sign_to_text`](https://github.com/Brenokluck/projeto-univille-tradutor-de-sinais/tree/main/sign_language_translator/models/sign_to_text) ou o codificador de qualquer modelo seq2seq multilingue, no seu conjunto de dados.
 
-</details>
+</div>
 </li>
 
 <li>
