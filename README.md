@@ -413,14 +413,9 @@ To create your own sign language translator, you'll need these essential compone
 </li>
 </ol>
 
-Remember to contribute back to the community:
+Veja o `código` em [Build Custom Translator section in ReadTheDocs](https://sign-language-translator.readthedocs.io/en/latest/#building-custom-translators).
 
-- Share your data, code, and models by creating a pull request, allowing others to benefit from your efforts.
-- Create your own sign language translator (e.g. as your university thesis) and contribute to a more inclusive and accessible world.
-
-See the `code` at [Build Custom Translator section in ReadTheDocs](https://sign-language-translator.readthedocs.io/en/latest/#building-custom-translators) or in this [notebook](https://github.com/sign-language-translator/notebooks/blob/main/translation/concatenative_synthesis.ipynb). [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sign-language-translator/notebooks/blob/main/translation/concatenative_synthesis.ipynb)
-
-## Module Hierarchy
+## Hierarquia do projeto
 
 <details>
 <summary><b style="font-size:large;"><code>sign-language-translator</code></b></summary>
