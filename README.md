@@ -423,7 +423,7 @@ See the `code` at [Build Custom Translator section in ReadTheDocs](https://sign-
 ## Module Hierarchy
 
 <details>
-<summary><b style="font-size:large;"><code>sign-language-translator</code></b> (Click to see file descriptions)</summary>
+<summary><b style="font-size:large;"><code>sign-language-translator</code></b></summary>
 
 <pre>
 ├── <a href="https://github.com/sign-language-translator/sign-language-translator/blob/main/README.md">README.md</a>
@@ -523,50 +523,7 @@ See the `code` at [Build Custom Translator section in ReadTheDocs](https://sign-
 </pre>
 
 </details>
-
-## How to Contribute
-
-<details>
-<summary><b>Datasets</b>:</summary>
-
-See our datasets & conventions [here](https://github.com/sign-language-translator/sign-language-datasets).
-
-- Contribute by scraping, compiling, and centralizing video datasets.
-- Help with labeling [word mapping datasets](https://github.com/sign-language-translator/sign-language-datasets/tree/main/parallel_texts).
-- Establish connections with Academies for the Deaf to collaboratively develop standardized _sign language grammar_ and integrate it into the rule-based translators.
-
-</details>
-
-<details>
-<summary><b>New Code</b>:</summary>
-
-- Create dedicated sign language classes catering to various regions.
-- Develop text language processing classes for diverse languages.
-- Experiment with training models using diverse hyper-parameters.
-- Don't forget to integrate `string short codes` of your classes and models into **`enums.py`**, and ensure to update factory functions like `get_model()` and `get_.*_language()`.
-- Enhance the codebase with comprehensive docstrings, exemplary usage cases, and thorough test cases.
-
-</details>
-
-<details open>
-<summary><b>Existing Code</b>:</summary>
-
-- Implement the `# ToDo` from the code or fix `# bug` / `# type: ignore` or anything from the [roadmap](#upcomingroadmap).
-- Optimize the codebase by implementing techniques like parallel processing and batching.
-- Strengthen the project with clear docstrings containing illustrative examples and with robust test coverage.
-- Contribute to the documentation for [sign-language-translator ReadTheDocs](https://github.com/sign-language-translator/sign-language-translator/blob/main/docs/index.rst) to empower users with comprehensive insights. Currently it needs a **better template** for the auto-generated pages.
-
-</details>
-
-<details>
-<summary><b>Product Development</b>:
-</summary>
-
-- Engage in the development efforts across [MLOps](https://huggingface.co/sltAI) & [web-frontend](https://github.com/sign-language-translator/slt-frontend) <!-- [backend](https://github.com/sign-language-translator/slt-backend), and [mobile](https://github.com/sign-language-translator/slt-mobile) --> domains, depending on your expertise and interests.
-
-</details>
-
-## Citation, Licence & Research Papers
+## licença
 
 Este projeto está licenciado ao abrigo da [Licença Apache 2.0](https://github.com/Brenokluck/projeto-univille-tradutor-de-sinais/blob/main/LICENSE). Está autorizado a utilizar a biblioteca, criar versões modificadas ou incorporar partes do código no seu próprio trabalho. O seu produto ou investigação, seja comercial ou não comercial, deve atribuir o devido crédito ao(s) autor(es) original(is), citando este repositório.
 
