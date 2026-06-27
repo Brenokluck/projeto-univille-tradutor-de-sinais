@@ -13,7 +13,7 @@ A linguagem de sinais consiste em gestos e expressões usadas principalmente por
 Isso é uma API e Framework desenvolvida em Python construida como um tradutor de linguagem de sinais...
 
 <div></div>
-Um grande obstáculo é a falta de conjuntos de dados (globais e regionais) e de estruturas que os engenheiros de aprendizagem profunda e os programadores de software possam utilizar para criar produtos úteis para a comunidade-alvo. Este projeto visa potenciar a tradução de língua gestual, fornecendo componentes, ferramentas, conjuntos de dados e modelos robustos, tanto para a conversão de língua gestual para texto como de texto para língua gestual. Tem como objetivo facilitar a criação de tradutores de língua gestual para qualquer região, abrindo simultaneamente o caminho para a normalização da língua gestual.
+Um grande obstáculo é a falta de conjuntos de dados (globais e regionais) e de estruturas que os engenheiros de Deep learning e os programadores de software possam utilizar para criar produtos úteis para a comunidade-alvo. Este projeto visa potenciar a tradução de língua gestual, fornecendo componentes, ferramentas, conjuntos de dados e modelos robustos, tanto para a conversão de língua gestual para texto como de texto para língua gestual. Tem como objetivo facilitar a criação de tradutores de língua gestual para qualquer região, abrindo simultaneamente o caminho para a normalização da língua gestual.
 
 Diferentes de muitos projetos esse permite traduzir frases inteiras e não apenas o alfabeto.
 
@@ -21,7 +21,7 @@ Diferentes de muitos projetos esse permite traduzir frases inteiras e não apena
 
 Esse pacote vem com um "_extensible rule-based_" sistema de tradução de texto para sinais que pode ser usado para treinar modelos de "_Deep Learning_" com seus dados para ambos sinais para texto como texto para sinais.
 
-Para criar um sistema de tradução baseado em regras para a sua língua regional, pode herdar as classes `TextLanguage` e `SignLanguage` e passá-las como argumentos à classe `ConcatenativeSynthesis`. Para escrever textos de exemplo com palavras suportadas, pode utilizar os nossos modelos linguísticos. Em seguida, pode utilizar esse sistema para afinar os nossos modelos de aprendizagem profunda.
+Para criar um sistema de tradução baseado em regras para a sua língua regional, pode herdar as classes `TextLanguage` e `SignLanguage` e passá-las como argumentos à classe `ConcatenativeSynthesis`. Para escrever textos de exemplo com palavras suportadas, pode utilizar os nossos modelos linguísticos. Em seguida, pode utilizar esse sistema para afinar os nossos modelos de Deep learning.
 
 Esse projeto foi baseado em um já veemente documentado, veja a documentação aqui:
 <kbd>[documentation](https://sign-language-translator.readthedocs.io)</kbd>
@@ -56,9 +56,9 @@ Existem duas abordagens para este problema:
       1. Crie um processador de texto herdando de `slt.languages.TextLanguage` (consulte o subpacote [`slt.languages.text`](https://github.com/Brenokluck/projeto-univille-tradutor-de-sinais/tree/main/sign_language_translator/languages/text) para mais detalhes)
       2. Mapeie a gramática e as palavras do texto para a língua gestual, herdando de `slt.languages.SignLanguage` (consulte o subpacote [`slt.languages.sign`](https://github.com/Brenokluck/projeto-univille-tradutor-de-sinais/tree/main/sign_language_translator/languages/sign) para mais detalhes)
       3. Utilize o nosso modelo baseado em regras [`slt.models.ConcatenativeSynthesis`](https://github.com/Brenokluck/projeto-univille-tradutor-de-sinais/blob/main/sign_language_translator/models/text_to_sign/concatenative_synthesis.py) para a tradução.
-   3. É mais rápido, mas o **significado das palavras tem de ser desambiguado** na entrada. Consulte a abordagem de aprendizagem profunda para lidar automaticamente com palavras ambíguas e **palavras que não constam no dicionário**.
+   3. É mais rápido, mas o **significado das palavras tem de ser desambiguado** na entrada. Consulte a abordagem de Deep Learning para lidar automaticamente com palavras ambíguas e **palavras que não constam no dicionário**.
 
-2. Aprendizagem profunda (seq2seq)
+2. Deep Learning (seq2seq)
    1. Gerar a sequência de nomes de ficheiros que devem ser concatenados
    2. Ou sintetize os sinais diretamente utilizando um codificador de texto multilingue pré-treinado e 1. uma GAN, um modelo de difusão ou um descodificador para sintetizar uma sequência de vetores de pose (`shape = (time, num_landmarks * num_coordinates)`) 1. Mover um avatar com esses vetores de pose (Fácil) 2. Utilizar a transferência de movimento para gerar um vídeo (Médio) 3. Sintetizar um fotograma de vídeo para cada vetor (Difícil) 2. um modelo de síntese de vídeo (Muito difícil)
    </div>
@@ -264,70 +264,70 @@ Funções disponível:
 
 [Modelos disponível](https://github.com/sign-language-translator/sign-language-datasets/releases/tag/v0.0.1)
 
-| Nome                                                                                                                                                                                             | Arquitetura                     | Descrição                                                                                           | Formato do Input                                            | Formato do Output                                                             |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------- | --------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| [N-Gram Langauge Model](https://github.com/sign-language-translator/sign-language-translator/blob/main/sign_language_translator/models/language_models/ngram_language_model.py)                  | Hash Tables                     | Predicts the next token based on learned statistics about previous N tokens.                        | List of tokens                                              | (token, probability)                                                          |
-| [Transformer Language Model](https://github.com/sign-language-translator/sign-language-translator/blob/main/sign_language_translator/models/language_models/transformer_language_model/model.py) | Decoder-only Transformers (GPT) | Predicts next token using query-key-value attention, linear transformations and soft probabilities. | torch.Tensor<br/>(batch, token_ids)<br/><br/>List of tokens | torch.Tensor<br/>(batch, token_ids, vocab_size)<br/><br/>(token, probability) |
+| Nome                                                                                                                                                                                                  | Arquitetura                                  | Descrição                                                                                                            | Formato do Input                                             | Formato do Output                                                               |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------------------------- |
+| [Modelo de linguagem N-Gram](https://github.com/sign-language-translator/sign-language-translator/blob/main/sign_language_translator/models/language_models/ngram_language_model.py)                  | Tabelas de hash                              | Prevê o próximo token com base em estatísticas aprendidas sobre os N tokens anteriores.                              | Lista de tokens                                              | (token, probabilidade)                                                          |
+| [Modelo de linguagem Transformer](https://github.com/sign-language-translator/sign-language-translator/blob/main/sign_language_translator/models/language_models/transformer_language_model/model.py) | Transformers apenas com descodificador (GPT) | Prevê o próximo token utilizando atenção do tipo «query-key-value», transformações lineares e probabilidades suaves. | torch.Tensor<br/>(batch, token_ids)<br/><br/>Lista de tokens | torch.Tensor<br/>(batch, token_ids, vocab_size)<br/><br/>(token, probabilidade) |
 
 </div>
 
 <div>
-<summary><b>Text Embedding</b>:</summary>
+<summary><b>Incorporação de texto</b>:</summary>
 
-[Available Trained models](https://github.com/sign-language-translator/sign-language-datasets/releases/)
+[Modelos disponível](https://github.com/sign-language-translator/sign-language-datasets/releases/)
 
-| Name                                                                                                                                                                  | Architecture | Description                                                                                                             | Input format | Output format             |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | ----------------------------------------------------------------------------------------------------------------------- | ------------ | ------------------------- |
-| [Vector Lookup](https://github.com/sign-language-translator/sign-language-translator/blob/main/sign_language_translator/models/text_embedding/vector_lookup_model.py) | HashTable    | Finds token index and returns the coresponding vector. Tokenizes sentences and computes average vector of known tokens. | string       | torch.Tensor<br/>(n_dim,) |
+| Nome                                                                                                                                                               | Arquitetura | Descrição                                                                                                                   | Formato do Input | Formato do Output         |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------- | --------------------------------------------------------------------------------------------------------------------------- | ---------------- | ------------------------- |
+| [Vector Lookup](https://github.com/Brenokluck/projeto-univille-tradutor-de-sinais/blob/main/sign_language_translator/models/text_embedding/vector_lookup_model.py) | HashTable   | Encontra o índice do token e devolve o vetor correspondente. Tokeniza frases e calcula o vetor médio dos tokens conhecidos. | string           | torch.Tensor<br/>(n_dim,) |
 
 </div>
 
-## How to Build a Translator for Sign Language
+## Como construir o seu próprio tradutor de linguagem de sinais
 
-To create your own sign language translator, you'll need these essential components:
+Para criar o seu próprio tradutor de língua gestual, vai precisar destes componentes essenciais:
 
 <ol>
 <li>
 <div>
-<summary>Data Collection</summary>
+<summary>Recolha de dados</summary>
 
-1.  Gather a collection of [dictionary videos](https://github.com/sign-language-translator/sign-language-datasets/releases/tag/v0.0.2) (word level) featuring individuals performing sign language gestures. These can be obtained from schools & organizations for the deaf. You should record multiple people perform the same sign to capture various _accents_ of the sign. Set up multiple cameras in different locations in parallel to further augment the data.
-2.  Prepare a [JSON file](https://github.com/sign-language-translator/sign-language-datasets/blob/main/parallel_texts/pk-dictionary-mapping.json) that maps dictionary video file names to corresponding text language words & phrases that are synonymous with the gestures.
-3.  Prepare a synthetic data [parallel corpus](https://github.com/sign-language-translator/sign-language-datasets/blob/main/parallel_texts/pk-synthetic-sentence-mapping.json) containing text language sentences and sequences of sign language video filenames. You can use langauge models to generate these sentences & sequences.
-4.  Prepare a dataset of sign language [sentence videos](https://github.com/sign-language-translator/sign-language-datasets/releases/tag/v0.0.3) that are labeled with [translations & glosses](https://github.com/sign-language-translator/sign-language-datasets/blob/main/parallel_texts/pk-sentence-mapping.json) in multiple text languages.
-
-</div>
-</li>
-
-<li>
-<div>
-<summary>Language Processing</summary>
-
-1.  Implement a subclass of `slt.languages.TextLanguage`:
-    - Tokenize your text language and assign appropriate tags to the tokens for streamlined processing.
-2.  Create a subclass of `slt.languages.SignLanguage`:
-    - Map text tokens to video filenames using the provided JSON data.
-    - Rearrange the sequence of video filenames to align with the grammar and structure of sign language.
+1.  Reúna uma coleção de [vídeos de dicionário](https://github.com/sign-language-translator/sign-language-datasets/releases/tag/v0.0.2) (ao nível da palavra) que mostrem pessoas a realizar gestos de língua gestual. Estes podem ser obtidos junto de escolas e organizações para surdos. Deve gravar várias pessoas a realizar o mesmo gesto para captar vários _acentos_ do mesmo. Instale várias câmaras em locais diferentes, em paralelo, para aumentar ainda mais a quantidade de dados.
+2.  Prepare um [ficheiro JSON](https://github.com/sign-language-translator/sign-language-datasets/blob/main/parallel_texts/pk-dictionary-mapping.json) que associe os nomes dos ficheiros de vídeo do dicionário às palavras e frases correspondentes na língua falada, que sejam sinónimas dos gestos.
+3.  Prepare um [corpus paralelo](https://github.com/sign-language-translator/sign-language-datasets/blob/main/parallel_texts/pk-synthetic-sentence-mapping.json) de dados sintéticos contendo frases em linguagem escrita e sequências de nomes de ficheiros de vídeo de linguagem gestual. Pode utilizar modelos linguísticos para gerar estas frases e sequências.
+4.  Prepare um conjunto de dados de [vídeos de frases](https://github.com/sign-language-translator/sign-language-datasets/releases/tag/v0.0.3) em língua gestual, rotulados com [traduções e glossários] (https://github.com/sign-language-translator/sign-language-datasets/blob/main/parallel_texts/pk-sentence-mapping.json) em vários idiomas escritos.
 
 </div>
 </li>
 
 <li>
 <div>
-<summary>Rule-Based Translation</summary>
+<summary>Processador de linguagem</summary>
 
-1.  Pass instances of your classes from the previous step to `slt.models.ConcatenativeSynthesis` class to obtain a rule-based translator object.
-2.  Construct sentences in your text language and use the rule-based translator to generate sign language translations. (You can use our language models to generate such texts.)
+1.  Implemente uma subclasse de `slt.languages.TextLanguage`:
+    - Divida o seu texto em tokens e atribua as etiquetas adequadas aos tokens para um processamento mais eficiente.
+2.  Crie uma subclasse de `slt.languages.SignLanguage`:
+    - Associe os tokens de texto aos nomes dos ficheiros de vídeo utilizando os dados JSON fornecidos.
+    - Reorganize a sequência dos nomes dos ficheiros de vídeo para que se alinhem com a gramática e a estrutura da língua gestual.
 
 </div>
 </li>
 
 <li>
 <div>
-<summary>Deep Learning Model Fine-Tuning</summary>
+<summary>Tradução baseada em regras</summary>
 
-1.  Utilize the (synthetic & real) sign language videos and corresponding text sentences from the previous step.
-2.  Apply our training pipeline to fine-tune a chosen model for improved accuracy and translation quality.
+1.  Passe as instâncias das suas classes do passo anterior para a classe `slt.models.ConcatenativeSynthesis` para obter um objeto tradutor baseado em regras.
+2.  Construa frases na sua língua de texto e utilize o tradutor baseado em regras para gerar traduções para a língua gestual. (Pode utilizar os nossos modelos de linguagem para gerar esses textos.)
+
+</div>
+</li>
+
+<li>
+<div>
+<summary>Ajuste fino de modelos Deep Learning</summary>
+
+1.  Utilize os vídeos de linguagem gestual (sintética e real) e as frases de texto correspondentes da etapa anterior.
+2.  Aplique o nosso fluxo de treino para aperfeiçoar um modelo selecionado, com vista a melhorar a precisão e a qualidade da tradução.
 
 </div>
 </li>
