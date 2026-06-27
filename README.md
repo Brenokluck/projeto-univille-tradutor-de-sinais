@@ -45,9 +45,7 @@ Linguagem de sinais para texto
 
 <li>
 <div>
-<summary>
 Texto para Linguagem de sinais
-</summary>
 
 Existem duas abordagens para este problema:
 
