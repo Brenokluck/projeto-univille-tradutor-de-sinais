@@ -10,14 +10,12 @@
 
 A linguagem de sinais consiste em gestos e expressões usadas principalmente por pessoas com deficiência auditiva para lhes ajudarem a se comunicar. Esse projeto é um trabalho para ajudar a diminuir a distância entre a comunidade de deficiêntes auditivos e pessoas sem essa deficiência utilizando IA.
 
-<details>
 Isso é uma API e Framework desenvolvida em Python construida como um tradutor de linguagem de sinais...
 
+<div></div>
 Um grande obstáculo é a falta de conjuntos de dados (globais e regionais) e de estruturas que os engenheiros de aprendizagem profunda e os programadores de software possam utilizar para criar produtos úteis para a comunidade-alvo. Este projeto visa potenciar a tradução de língua gestual, fornecendo componentes, ferramentas, conjuntos de dados e modelos robustos, tanto para a conversão de língua gestual para texto como de texto para língua gestual. Tem como objetivo facilitar a criação de tradutores de língua gestual para qualquer região, abrindo simultaneamente o caminho para a normalização da língua gestual.
 
 Diferentes de muitos projetos esse permite traduzir frases inteiras e não apenas o alfabeto.
-
-</details>
 
 ### Solução
 
