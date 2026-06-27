@@ -341,7 +341,7 @@ Veja o `código` em [Build Custom Translator section in ReadTheDocs](https://sig
 
 ## Hierarquia do projeto
 
-<div>
+<details>
 <summary><b style="font-size:large;"><code>sign-language-translator</code></b></summary>
 
 <pre>
@@ -441,7 +441,7 @@ Veja o `código` em [Build Custom Translator section in ReadTheDocs](https://sig
             └── <a href="https://github.com/sign-language-translator/sign-language-translator/blob/main/sign_language_translator/vision/video/video.py">video.py</a>
 </pre>
 
-</div>
+</details>
 ## licença
 
 Este projeto está licenciado ao abrigo da [Licença Apache 2.0](https://github.com/Brenokluck/projeto-univille-tradutor-de-sinais/blob/main/LICENSE). Está autorizado a utilizar a biblioteca, criar versões modificadas ou incorporar partes do código no seu próprio trabalho. O seu produto ou investigação, seja comercial ou não comercial, deve atribuir o devido crédito ao(s) autor(es) original(is), citando este repositório.
