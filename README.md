@@ -197,7 +197,7 @@ Commands:
   translate  Translate text into sign language or vice versa.
 ```
 
-**Generate training examples**: write a sentence with a language model and synthesize a sign language video from it with a single command:
+**Gerar exemplos de treino**: escrever uma frase com um modelo de linguagem e, a partir dela, sintetizar um vídeo de língua gestual com um único comando:
 
 ```bash
 slt translate --model-code rule-based --text-lang urdu --sign-lang pk-sl --sign-format video \
@@ -206,7 +206,7 @@ slt translate --model-code rule-based --text-lang urdu --sign-lang pk-sl --sign-
 
 ## Languages
 
-<details>
+<div>
 <summary><b>Text Languages</b></summary>
 
 Available Functions:
@@ -222,9 +222,9 @@ Available Functions:
 | [Urdu](https://github.com/sign-language-translator/sign-language-translator/blob/main/sign_language_translator/languages/text/urdu.py)       | 2080 words+phrases | 227              | 776   |
 | [Hindi](https://github.com/sign-language-translator/sign-language-translator/blob/main/sign_language_translator/languages/text/hindi.py)     | 137 words+phrases  | 5                | 84    |
 
-</details>
+</div>
 
-<details>
+<div>
 <summary><b>Sign Languages</b></summary>
 
 Available Functions:
@@ -237,11 +237,11 @@ Available Functions:
 | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | -------- | :------------------------------------------------------------------------------------: |
 | [Pakistan Sign Language](https://github.com/sign-language-translator/sign-language-translator/blob/main/sign_language_translator/languages/sign/pakistan_sign_language.py) | 776        | 23 hours | [details](https://github.com/sign-language-translator/sign-language-datasets#datasets) |
 
-</details>
+</div>
 
 ## Models
 
-<details>
+<div>
 <summary><b>Translation</b>: Text to sign Language</summary>
 
 <!-- [Available Trained models]() -->
@@ -250,9 +250,9 @@ Available Functions:
 | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------ | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [Concatenative Synthesis](https://github.com/sign-language-translator/sign-language-translator/blob/main/sign_language_translator/models/text_to_sign/concatenative_synthesis.py) | Rules + Hash Tables | The Core Rule-Based translator mainly used to synthesize translation dataset.<br/>Initialize it using TextLanguage, SignLanguage & SignFormat objects. | string | slt.Video \| slt.Landmarks | [![Open in Spaces](https://huggingface.co/datasets/huggingface/badges/resolve/main/open-in-hf-spaces-sm.svg)](https://huggingface.co/spaces/sltAI/ConcatenativeSynthesis) |
 
-</details>
+</div>
 
-<details>
+<div>
 <summary><b>Sign Embedding/Feature extraction</b>:</summary>
 
 <!-- [Available Trained models]() -->
@@ -261,9 +261,9 @@ Available Functions:
 | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ | --------------------------------------------- |
 | [MediaPipe Landmarks<br>(Pose + Hands)](https://github.com/sign-language-translator/sign-language-translator/blob/main/sign_language_translator/models/video_embedding/mediapipe_landmarks_model.py) | CNN based pipelines. See Here: [Pose](https://arxiv.org/pdf/2006.10204.pdf), [Hands](https://arxiv.org/pdf/2006.10214.pdf) | Encodes videos into pose vectors (3D world or 2D image) depicting the movements of the performer. | List of numpy images<br/>(n_frames, height, width, channels) | torch.Tensor<br/>(n_frames, n_landmarks \* 5) |
 
-</details>
+</div>
 
-<details>
+<div>
 <summary><b>Data generation</b>: Language Models</summary>
 
 [Available Trained models](https://github.com/sign-language-translator/sign-language-datasets/releases/tag/v0.0.1)
@@ -273,9 +273,9 @@ Available Functions:
 | [N-Gram Langauge Model](https://github.com/sign-language-translator/sign-language-translator/blob/main/sign_language_translator/models/language_models/ngram_language_model.py)                  | Hash Tables                     | Predicts the next token based on learned statistics about previous N tokens.                        | List of tokens                                              | (token, probability)                                                          |
 | [Transformer Language Model](https://github.com/sign-language-translator/sign-language-translator/blob/main/sign_language_translator/models/language_models/transformer_language_model/model.py) | Decoder-only Transformers (GPT) | Predicts next token using query-key-value attention, linear transformations and soft probabilities. | torch.Tensor<br/>(batch, token_ids)<br/><br/>List of tokens | torch.Tensor<br/>(batch, token_ids, vocab_size)<br/><br/>(token, probability) |
 
-</details>
+</div>
 
-<details>
+<div>
 <summary><b>Text Embedding</b>:</summary>
 
 [Available Trained models](https://github.com/sign-language-translator/sign-language-datasets/releases/)
@@ -284,7 +284,7 @@ Available Functions:
 | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | ----------------------------------------------------------------------------------------------------------------------- | ------------ | ------------------------- |
 | [Vector Lookup](https://github.com/sign-language-translator/sign-language-translator/blob/main/sign_language_translator/models/text_embedding/vector_lookup_model.py) | HashTable    | Finds token index and returns the coresponding vector. Tokenizes sentences and computes average vector of known tokens. | string       | torch.Tensor<br/>(n_dim,) |
 
-</details>
+</div>
 
 ## How to Build a Translator for Sign Language
 
@@ -292,7 +292,7 @@ To create your own sign language translator, you'll need these essential compone
 
 <ol>
 <li>
-<details>
+<div>
 <summary>Data Collection</summary>
 
 1.  Gather a collection of [dictionary videos](https://github.com/sign-language-translator/sign-language-datasets/releases/tag/v0.0.2) (word level) featuring individuals performing sign language gestures. These can be obtained from schools & organizations for the deaf. You should record multiple people perform the same sign to capture various _accents_ of the sign. Set up multiple cameras in different locations in parallel to further augment the data.
@@ -300,11 +300,11 @@ To create your own sign language translator, you'll need these essential compone
 3.  Prepare a synthetic data [parallel corpus](https://github.com/sign-language-translator/sign-language-datasets/blob/main/parallel_texts/pk-synthetic-sentence-mapping.json) containing text language sentences and sequences of sign language video filenames. You can use langauge models to generate these sentences & sequences.
 4.  Prepare a dataset of sign language [sentence videos](https://github.com/sign-language-translator/sign-language-datasets/releases/tag/v0.0.3) that are labeled with [translations & glosses](https://github.com/sign-language-translator/sign-language-datasets/blob/main/parallel_texts/pk-sentence-mapping.json) in multiple text languages.
 
-</details>
+</div>
 </li>
 
 <li>
-<details>
+<div>
 <summary>Language Processing</summary>
 
 1.  Implement a subclass of `slt.languages.TextLanguage`:
@@ -313,27 +313,27 @@ To create your own sign language translator, you'll need these essential compone
     - Map text tokens to video filenames using the provided JSON data.
     - Rearrange the sequence of video filenames to align with the grammar and structure of sign language.
 
-</details>
+</div>
 </li>
 
 <li>
-<details>
+<div>
 <summary>Rule-Based Translation</summary>
 
 1.  Pass instances of your classes from the previous step to `slt.models.ConcatenativeSynthesis` class to obtain a rule-based translator object.
 2.  Construct sentences in your text language and use the rule-based translator to generate sign language translations. (You can use our language models to generate such texts.)
 
-</details>
+</div>
 </li>
 
 <li>
-<details>
+<div>
 <summary>Deep Learning Model Fine-Tuning</summary>
 
 1.  Utilize the (synthetic & real) sign language videos and corresponding text sentences from the previous step.
 2.  Apply our training pipeline to fine-tune a chosen model for improved accuracy and translation quality.
 
-</details>
+</div>
 </li>
 </ol>
 
@@ -341,7 +341,7 @@ Veja o `código` em [Build Custom Translator section in ReadTheDocs](https://sig
 
 ## Hierarquia do projeto
 
-<details>
+<div>
 <summary><b style="font-size:large;"><code>sign-language-translator</code></b></summary>
 
 <pre>
@@ -441,7 +441,7 @@ Veja o `código` em [Build Custom Translator section in ReadTheDocs](https://sig
             └── <a href="https://github.com/sign-language-translator/sign-language-translator/blob/main/sign_language_translator/vision/video/video.py">video.py</a>
 </pre>
 
-</details>
+</div>
 ## licença
 
 Este projeto está licenciado ao abrigo da [Licença Apache 2.0](https://github.com/Brenokluck/projeto-univille-tradutor-de-sinais/blob/main/LICENSE). Está autorizado a utilizar a biblioteca, criar versões modificadas ou incorporar partes do código no seu próprio trabalho. O seu produto ou investigação, seja comercial ou não comercial, deve atribuir o devido crédito ao(s) autor(es) original(is), citando este repositório.
