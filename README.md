@@ -178,13 +178,11 @@ Individual models deployed on HuggingFace Spaces:
 ```python
 import sign_language_translator as slt
 
-# The core model of the project (rule-based text-to-sign translator)
-# which enables us to generate synthetic training datasets
 model = slt.models.ConcatenativeSynthesis(
    text_language="urdu", sign_language="pk-sl", sign_format="video" )
 
-text = "یہ بہت اچھا ہے۔" # "this-very-good-is"
-sign = model.translate(text) # tokenize, map, download & concatenate
+text = "this-very-good-is"
+sign = model.translate(text)
 sign.show()
 
 model.sign_format = slt.SignFormatCodes.LANDMARKS
@@ -197,44 +195,31 @@ sign_2.save("this-is-an-apple.csv", overwrite=True)
 
 # ==== Hindi ==== #
 model.text_language = slt.TextLanguageCodes.HINDI
-sign_3 = model.translate("कैसे हैं आप?") # "how-are-you"
-sign_3.save_animation("how-are-you.gif", overwrite=True)
+sign_3 = model.translate("this-very-good-is")
 ```
-
-| ![this very good is](https://github.com/sign-language-translator/sign-language-translator/assets/118578823/7f4ff312-df03-4b11-837b-5fb895c9f08e) | <picture><source media="(prefers-color-scheme: dark)" srcset="https://github.com/user-attachments/assets/4d54a197-d723-4cc4-a3ba-cae98e681003" /><source media="(prefers-color-scheme: light)" srcset="https://github.com/user-attachments/assets/45e71098-7a94-4a9e-ad24-1773369b65d5" /><img alt="how are you (landmark 3d plot)" src="https://github.com/user-attachments/assets/45e71098-7a94-4a9e-ad24-1773369b65d5" /></picture> |
-| :----------------------------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-|                                                      "یہ بہت اچھا ہے۔" (this-very-good-is)                                                       |                                                                                                                                                                                                      "कैसे हैं आप?" (how-are-you)                                                                                                                                                                                                      |
 
 </br>
 
 ```python
 import sign_language_translator as slt
 
-# sign = slt.Video("path/to/video.mp4")
-sign = slt.Video.load_asset("pk-hfad-1_aap-ka-nam-kya(what)-hy")  # your name what is? (auto-downloaded)
+sign = slt.Video.load_asset("your name what is?")
 sign.show_frames_grid()
 
-# Extract Pose Vector for feature reduction
-embedding_model = slt.models.MediaPipeLandmarksModel()      # pip install "sign_language_translator[mediapipe]"  # (or [all])
+embedding_model = slt.models.MediaPipeLandmarksModel()
 embedding = embedding_model.embed(sign.iter_frames())
 
 slt.Landmarks(embedding.reshape((-1, 75, 5)),
               connections="mediapipe-world"  ).show()
-
-# # Load sign-to-text model (pytorch) (COMING SOON!)
-# translation_model = slt.get_model(slt.ModelCodes.Gesture)
-# text = translation_model.translate(embedding)
-# print(text)
 ```
 
 ```python
-# custom translator (https://slt.readthedocs.io/en/latest/#building-custom-translators)
 help(slt.languages.SignLanguage)
 help(slt.languages.text.Urdu)
 help(slt.models.ConcatenativeSynthesis)
 ```
 
-### Command Line
+### Linhas de Comando
 
 ```bash
 $ slt
@@ -581,153 +566,12 @@ See our datasets & conventions [here](https://github.com/sign-language-translato
 
 </details>
 
-## Upcoming/Roadmap
-
-<details open>
-<summary>LANDMARKS_WRAPPER: v0.8</summary>
-
-```python
-# 0.8.2: landmark augmentation (zoom, rotate, move, noise, duration, rectify, stabilize, __repr__)
-# 0.8.3: trim signs before concatenation, insert transition frames
-# 0.8.4: plotly & three.js/mixamo display , pass matplotlib kwargs all the way down
-
-# 0.8.5: subtitles/captions
-# 0.8.6: stabilize video batch using landmarks, draw/overlay 2D landmarks on video/image
-```
-
-</details>
-
-<details>
-<summary>CLEAN_UP: v0.9</summary>
-
-```python
-# mock test cases which require internet when internet isn't available / test for  dummy languages
-# improve langauge classes architecture (for easy customization via inheritance) | clean-up slt.languages.text.* code
-# ? add a generic SignedTextLanguage class which just maps text lang to signs based on mappinng.json ?
-# add progress bar to slt.models.MediaPipeLandmarksModel
-
-# rename 'country' to 'region' & rename wordless_wordless to wordless.mp4 # insert video type to archives: .*.videos-`(dictionary|sentences)(-replication)?`-mp4.zip
-# decide mediapipe-all = world & image concactenated in landmark dim or feature dim?
-# expand dictionary video data by scraping everything
-# upload the 12 person dictionary replication landmark dataset
-```
-
-</details>
-
-<details>
-<summary>DEEP_TRANSLATION: v0.9 - v1.2</summary>
-
-```python
-# 0.9.1: TransformerLanguageModel - Drop space tokens & bidirectional prediction. infer on specific vocab only .... pretrain on max vocab and mixed data. finetune on balanced data (wiki==news==novels==poetry==reviews) .... then RLHF on coherent generations (Comparison data: generate 100 examples (at high temperature) and cut them at random points and regerate the rest and label these pairs for coherence[ and novelity].) (use same model/BERT as reward model with regression head.) (ranking loss with margin) (each token is a time step) (min KL Divergance from base - exploration without mode collapse) ... label disambiguation data and freeze all and finetune disambiguated_tokens_embeddings  (disambiguated embedding: word ± 0.1*(sense1 - sense2).normalize()) .... generate data on broken compound words and finetune their token_embeddings ... generate sentences of supported words and translate to other languages.
-# 0.9.2: sign to text with custom seq2seq transformer
-# 0.9.3: pose vector generation from text with custom seq2seq transformer
-# 0.9.4: sign to text with fine-tuned whisper
-# 0.9.5: pose vector generation with fine-tuned mBERT
-# 0.9.6: custom 3DLandmark model (training data = mediapipe's output on activity recognition or any dataset)
-# 1.0.0: all models trained on custom landmark model
-# 🎉
-# 1.0.1: video to text model (connect custom landmark model with sign2text model and finetune)
-# 1.1.0: motion transfer
-# 1.1.1: custom pose2video: stable diffusion or GAN?
-# 1.2.0: speech to sign
-# 1.2.1: sign to speech
-```
-
-</details>
-
-<details>
-<summary>MISCELLANEOUS</summary>
-
-Issues
-
-```python
-# bugfix:      inaccurate num_frames in video file metadata
-# bugfix:      Expression of type "Literal[False]" cannot be assigned to member "SHOW_DOWNLOAD_PROGRESS" of class "Settings"
-# feature:     video transformations (e.g. stabilization with image pose landmarks, watermark text/logo)
-# improvement: SignFilename.parse("videos/pk-hfad-1_airplane.mp4").gloss  # airplane
-```
-
-Miscellaneous
-
-```python
-# parallel text corpus
-# clean demonstration notebooks
-# * host video dataset online, descriptive filenames
-# dataset info table
-# sequence diagram for creating a translator
-# GUI with gradio or something
-```
-
-Research Papers
-
-```python
-# datasets: clips, text, sentences, disambiguation
-# rule based translation: describe entire repo
-# deep sign-to-text: pipeline + experiments
-# deep text-to-sign: pipeline + experiments
-```
-
-Servers / Product
-
-```python
-# ML inference server
-# Django backend server
-# React Native mobile app
-```
-
-[![Total Views](https://u8views.com/api/v1/github/profiles/118578823/views/total-count.svg)](https://u8views.com/github/mdsrqbl)
-
-</details>
-
 ## Citation, Licence & Research Papers
 
-```bibtex
-@software{mdsr2023slt,
-  author       = {Mudassar Iqbal},
-  title        = {Sign Language Translator: Python Library and AI Framework},
-  year         = {2023},
-  publisher    = {GitHub},
-  howpublished = {\url{https://github.com/sign-language-translator/sign-language-translator}},
-}
-```
-
-This project is licensed under the [Apache 2.0 License](https://github.com/sign-language-translator/sign-language-translator/blob/main/LICENSE). You are permitted to use the library, create modified versions, or incorporate pieces of the code into your own work. Your product or research, whether commercial or non-commercial, must provide appropriate credit to the original author(s) by citing this repository.
+Este projeto está licenciado ao abrigo da [Licença Apache 2.0](https://github.com/Brenokluck/projeto-univille-tradutor-de-sinais/blob/main/LICENSE). Está autorizado a utilizar a biblioteca, criar versões modificadas ou incorporar partes do código no seu próprio trabalho. O seu produto ou investigação, seja comercial ou não comercial, deve atribuir o devido crédito ao(s) autor(es) original(is), citando este repositório.
 
 Stay Tuned for research Papers!
 
-## Credits and Gratitude
+## Crédito e gratitude
 
-This project started in October 2021 as a BS Computer Science final year project with 3 students and 1 supervisor. After 9 months at university, it became a hobby project for [Mudassar](https://github.com/mdsrqbl) who has continued it till at least 2024-09-23.
-
-## Bonus
-
-Count total number of **lines of code** (Package: **14,034** + Tests: **2,928**):
-
-```bash
-git ls-files | grep '\.py' | xargs wc -l
-```
-
-**Just for _fun_ 🙃**
-
-```text
-Q: What was the deaf student's favorite course?
-A: Communication skills
-```
-
-```text
-Q: Why was the ML engineer sad?
-A: Triplet loss
-```
-
-<details>
-<summary><b>Star History</b></summary>
-
-<a href="https://star-history.com/#sign-language-translator/sign-language-translator&Timeline">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=sign-language-translator/sign-language-translator&type=Timeline&theme=dark" />
-    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=sign-language-translator/sign-language-translator&type=Timeline" />
-    <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=sign-language-translator/sign-language-translator&type=Timeline" />
-  </picture>
-</a>
-
-</details>
+Esse projeto usa como base o projeto desenvolvido e documentado por [Mudasar](https://github.com/mdsrqbl);
