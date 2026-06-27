@@ -31,7 +31,6 @@ Esse projeto foi baseado em um já veemente documentado, veja a documentação a
 ### Componentes maiores
 
 <ol>
-<li>
 <details>
 <summary>
 Linguagem de sinais para texto
@@ -45,7 +44,6 @@ Linguagem de sinais para texto
 4. Ajustar uma rede neural, como, por exemplo, uma proveniente de [`slt.models.sign_to_text`](https://github.com/Brenokluck/projeto-univille-tradutor-de-sinais/tree/main/sign_language_translator/models/sign_to_text) ou o codificador de qualquer modelo seq2seq multilingue, no seu conjunto de dados.
 
 </details>
-</li>
 
 <li>
 <details>
