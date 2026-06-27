@@ -33,25 +33,25 @@ Esse projeto foi baseado em um já veemente documentado, veja a documentação a
 <ol>
 <li>
 <details>
-<summary><b>
-Sign language to Text
-</b></summary>
+<summary>
+Linguagem de sinais para texto
+</summary>
 
-1. Extract features from sign language videos
-   1. See the [`slt.models.video_embedding`](https://github.com/sign-language-translator/sign-language-translator/tree/main/sign_language_translator/models/video_embedding) sub-package and the [`$ slt embed`](https://slt.readthedocs.io/en/latest/#embed-videos) command.
-   2. Currently Mediapipe 3D landmarks are being used for deep learning.
-2. Transcribe and translate signs into multiple text languages to generalize the model.
-3. To train for word-for-word gloss writing task, also use a synthetic dataset made by concatenating signs for each word in a text. (See [`slt.models.ConcatenativeSynthesis`](https://github.com/sign-language-translator/sign-language-translator/blob/main/sign_language_translator/models/text_to_sign/concatenative_synthesis.py))
-4. Fine-tune a neural network, such as one from [`slt.models.sign_to_text`](https://github.com/sign-language-translator/sign-language-translator/tree/main/sign_language_translator/models/sign_to_text) or the encoder of any multilingual seq2seq model, on your dataset.
+1. Extrai detalhes de video
+   1. veja o [`slt.models.video_embedding`](https://github.com/Brenokluck/projeto-univille-tradutor-de-sinais/tree/main/sign_language_translator/models/video_embedding) sub pacote e p [`$ slt embed`](https://slt.readthedocs.io/en/latest/#embed-videos) comando.
+   2. Atualmente o Mediapipe 3D landmarks está sendo usado para deep learning.
+2. Transcreve e traduz sinais em multiplas linguagens de texto.
+3. Para treinar palavra por palavra em tarefas de redação sobre glossário, utilize também um conjunto de dados sintético criado através da concatenação de sinais para cada palavra de um texto. (veja [`slt.models.ConcatenativeSynthesis`](https://github.com/Brenokluck/projeto-univille-tradutor-de-sinais/blob/main/sign_language_translator/models/text_to_sign/concatenative_synthesis.py))
+4. Ajustar uma rede neural, como, por exemplo, uma proveniente de [`slt.models.sign_to_text`](https://github.com/Brenokluck/projeto-univille-tradutor-de-sinais/tree/main/sign_language_translator/models/sign_to_text) ou o codificador de qualquer modelo seq2seq multilingue, no seu conjunto de dados.
 
 </details>
 </li>
 
 <li>
 <details>
-<summary><b>
+<summary>
 Text to Sign Language
-</b></summary>
+</summary>
 
 There are two approaches to this problem:
 
