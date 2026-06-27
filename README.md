@@ -31,9 +31,7 @@ Esse projeto foi baseado em um já veemente documentado, veja a documentação a
 <ol>
 <li>
 <div>
-<summary>
 Linguagem de sinais para texto
-</summary>
 
 1. Extrai detalhes de video
    1. veja o [`slt.models.video_embedding`](https://github.com/Brenokluck/projeto-univille-tradutor-de-sinais/tree/main/sign_language_translator/models/video_embedding) sub pacote e p [`$ slt embed`](https://slt.readthedocs.io/en/latest/#embed-videos) comando.
