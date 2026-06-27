@@ -1,74 +1,34 @@
 <div align="center">
 
-# Sign Language Translator ⠎⠇⠞
-
-<img width="61.8%" alt="SLT: Sign Language Translator" src="https://github.com/sign-language-translator/sign-language-translator/assets/118578823/d4723333-3d25-413d-83a1-a4bbdc8da15a">
-
-<br>
-</br>
-
-***Build Custom Translators and Translate between Sign Language & Text with AI.***
-
-[![python](https://img.shields.io/pypi/pyversions/sign-language-translator?logo=python)](https://pypi.org/project/sign-language-translator/)
-[![PyPi](https://img.shields.io/pypi/v/sign-language-translator?logo=pypi)](https://pypi.org/project/sign-language-translator/)
-![GitHub branch check runs](https://img.shields.io/github/check-runs/sign-language-translator/sign-language-translator/main?logo=pytest)
-[![codecov](https://codecov.io/gh/sign-language-translator/sign-language-translator/branch/main/graph/badge.svg?precision=1)](https://codecov.io/gh/sign-language-translator/sign-language-translator)
-[![Documentation Status](https://img.shields.io/readthedocs/sign-language-translator?logo=readthedocs&)](https://sign-language-translator.readthedocs.io/)<br>
-[![GitHub Repo stars](https://img.shields.io/github/stars/sign-language-translator/sign-language-translator?logo=github)](https://github.com/sign-language-translator/sign-language-translator/stargazers)
-[![Repository Views per Month](https://img.shields.io/badge/dynamic/xml?url=https%3A%2F%2Fu8views.com%2Fapi%2Fv1%2Fgithub%2Fprofiles%2F118578823%2Fviews%2Fday-week-month-total-count.svg&query=%2F*%5Blocal-name()%3D'svg'%5D%2F*%5Blocal-name()%3D'g'%5D%5B3%5D%2F*%5Blocal-name()%3D'g'%5D%2F*%5Blocal-name()%3D'text'%5D%5B2%5D&label=%F0%9F%91%81%EF%B8%8F%20views%2Fmonth&color=6d96ff&cacheSeconds=5000)](https://u8views.com/github/mdsrqbl)
-[![Downloads](https://img.shields.io/pepy/dt/sign_language_translator?color=purple&logoColor=white&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iODAwIiBmaWxsPSJub25lIiB2aWV3Qm94PSIwIDAgMjQgMjQiPjxwYXRoIGZpbGw9IiMwMDAiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTkuMiAyLjhjLS4yLjMtLjIuOC0uMiAxLjZWMTFINy44Yy0uOSAwLTEuMyAwLTEuNS4yYS44LjggMCAwIDAtLjMuNmMwIC4zLjMuNiAxIDEuMmw0LjEgNC40LjcuNmEuNy43IDAgMCAwIC40IDBsLjctLjZMMTcgMTNjLjYtLjYuOS0xIC45LTEuMmEuOC44IDAgMCAwLS4zLS42Yy0uMi0uMi0uNi0uMi0xLjUtLjJIMTVWNC40YzAtLjggMC0xLjMtLjItMS42YTEuNSAxLjUgMCAwIDAtLjYtLjZjLS4zLS4yLS44LS4yLTEuNi0uMmgtMS4yYy0uOCAwLTEuMyAwLTEuNi4yYTEuNSAxLjUgMCAwIDAtLjYuNnpNNSAyMWExIDEgMCAwIDAgMSAxaDEyYTEgMSAwIDEgMCAwLTJINmExIDEgMCAwIDAtMSAxeiIgY2xpcC1ydWxlPSJldmVub2RkIi8+PC9zdmc+)](https://pepy.tech/projects/sign-language-translator/)<br>
-[![HuggingFace Spaces](https://img.shields.io/badge/%F0%9F%8C%90%20Web%20Demo-%F0%9F%A4%97%20hf.co%2FsltAI-mediumpurple)](https://huggingface.co/sltAI)
-
-| **Support Us** ❤️ | [![PayPal](https://img.shields.io/badge/PayPal-00457C?logo=paypal&logoColor=white)](https://www.paypal.com/donate/?hosted_button_id=7SNGNSKUQXQW2) |
-| - | - |
+# Tradutor de linguagem de sinais ⠎⠇⠞
 
 </div>
 
 ---
 
-1. [Overview](#overview)
-   1. [Solution](#solution)
-   2. [Major Components](#major-components)
-   3. [Goals](#goals)
-2. [**Installation** `🛠️`](#how-to-install-the-package)
-3. [**Usage**](#usage)
-   1. [Web 🌐](#web-gui)
-   2. [Python `🐍`](#python)
-   3. [Command Line <span style="color:green">**`>_`**</span>](#command-line)
-4. [Languages](#languages)
-5. [Models](#models)
-6. [How to Build a Translator for your Sign Language](#how-to-build-a-translator-for-sign-language)
-7. [Module Hierarchy](#module-hierarchy)
-8. [How to Contribute](#how-to-contribute)
-9. [Citation, License & Research Papers](#citation-licence--research-papers)
-10. [Credits and Gratitude](#credits-and-gratitude)
-
 ## Overview
 
-Sign language consists of gestures and expressions used mainly by the hearing-impaired to talk. This project is an effort to bridge the communication gap between the hearing and the hearing-impaired community using Artificial Intelligence.
+A linguagem de sinais consiste em gestos e expressões usadas principalmente por pessoas com deficiência auditiva para lhes ajudarem a se comunicar. Esse projeto é um trabalho para ajudar a diminuir a distância entre a comunidade de deficiêntes auditivos e pessoas sem essa deficiência utilizando IA.
 
 <details>
-<summary>This python library provides a user-friendly translation API and a framework for building sign language translators that can easily adapt to any regional sign language...</summary>
-</br>
-A big hurdle is the lack of datasets (global & regional) and frameworks that deep learning engineers and software developers can use to build useful products for the target community. This project aims to empower sign language translation by providing robust components, tools, datasets and models for both sign language to text and text to sign language conversion. It aims to facilitate the creation of sign language translators for any region, while building the way towards sign language standardization.
+<summary>Isso é uma API e Framework desenvolvida em Python construida como um tradutor de linguagem de sinais...</summary>
 
-</br>
-Unlike most other projects, this python library can translate full sentences and not just the alphabet.
+Um grande obstáculo é a falta de conjuntos de dados (globais e regionais) e de estruturas que os engenheiros de aprendizagem profunda e os programadores de software possam utilizar para criar produtos úteis para a comunidade-alvo. Este projeto visa potenciar a tradução de língua gestual, fornecendo componentes, ferramentas, conjuntos de dados e modelos robustos, tanto para a conversão de língua gestual para texto como de texto para língua gestual. Tem como objetivo facilitar a criação de tradutores de língua gestual para qualquer região, abrindo simultaneamente o caminho para a normalização da língua gestual.
+
+Diferentes de muitos projetos esse permite traduzir frases inteiras e não apenas o alfabeto.
 
 </details>
 
-<!-- This is the package that powers the [slt_ai website](https://github.com/mdsrqbl/slt_ai). -->
+### Solução
 
-### Solution
+Esse pacote vem com um "_extensible rule-based_" sistema de tradução de texto para sinais que pode ser usado para treinar modelos de "_Deep Learning_" com seus dados para ambos sinais para texto como texto para sinais.
 
-This package comes with an *extensible rule-based* text-to-sign translation system that can be used to generate training data for *Deep Learning* models for both sign to text & text to sign translation. <!-- Pipelines for fine-tuning our deep learning models are also available. -->
+Para criar um sistema de tradução baseado em regras para a sua língua regional, pode herdar as classes `TextLanguage` e `SignLanguage` e passá-las como argumentos à classe `ConcatenativeSynthesis`. Para escrever textos de exemplo com palavras suportadas, pode utilizar os nossos modelos linguísticos. Em seguida, pode utilizar esse sistema para afinar os nossos modelos de aprendizagem profunda.
 
-> [!Tip]
-> To create a rule-based translation system for your regional language, you can inherit the TextLanguage and SignLanguage classes and pass them as arguments to the ConcatenativeSynthesis class. To write sample texts of supported words, you can use our language models. Then, you can use that system to fine-tune our deep learning models.
+Esse projeto foi baseado em um já veemente documentado, veja a documentação aqui:
+<kbd>[documentation](https://sign-language-translator.readthedocs.io)</kbd>
 
-See the <kbd>[documentation](https://sign-language-translator.readthedocs.io)</kbd> and our <kbd>[datasets](https://github.com/sign-language-translator/sign-language-datasets)</kbd> for details.
-
-### Major Components
+### Componentes maiores
 
 <ol>
 <li>
@@ -96,6 +56,7 @@ Text to Sign Language
 There are two approaches to this problem:
 
 1. Rule Based Concatenation
+
    1. Label a Sign Language Dictionary with all word tokens that can be mapped to those signs. See our mapping format [here](https://github.com/sign-language-translator/sign-language-datasets/blob/main/parallel_texts/pk-dictionary-mapping.json).
    2. Parse the input text and play appropriate video clips for each token.
       1. Build a text processor by inheriting `slt.languages.TextLanguage` (see [`slt.languages.text`](https://github.com/sign-language-translator/sign-language-translator/tree/main/sign_language_translator/languages/text) sub-package for details)
@@ -129,7 +90,7 @@ Language Processing
 2. Text Processing
    - Normalize text input by substituting unknown characters/spellings with supported words.
    - Disambiguate context-dependent words to ensure accurate translation.
-         "spring" -> ["spring(water-spring)", "spring(metal-coil)"]
+     "spring" -> ["spring(water-spring)", "spring(metal-coil)"]
    - Tokenize text (word & sentence level).
    - Classify tokens and mark them with Tags.
 
@@ -142,7 +103,7 @@ Language Processing
 Datasets
 </b></summary>
 
-For our datasets & conventions, see the [*sign-language-datasets* repo](https://github.com/sign-language-translator/sign-language-datasets) and its [releases](https://github.com/sign-language-translator/sign-language-datasets/releases).
+For our datasets & conventions, see the [_sign-language-datasets_ repo](https://github.com/sign-language-translator/sign-language-datasets) and its [releases](https://github.com/sign-language-translator/sign-language-datasets/releases).
 See this [documentation](https://slt.readthedocs.io/en/latest/datasets.html) for more on building a dataset of Sign Language videos (or motion capture gloves' output features).
 
 **Your data should include**:
@@ -162,7 +123,7 @@ See this [documentation](https://slt.readthedocs.io/en/latest/datasets.html) for
 **Try to incorporate**:
 
 1. Multiple camera angles
-2. Diverse performers to capture all *accents* of the signs
+2. Diverse performers to capture all _accents_ of the signs
 3. Uniqueness in labeling of word tokens
 4. Variations in signs for the same concept
 
@@ -206,7 +167,7 @@ pip install -e git+https://github.com/sign-language-translator/sign-language-tra
 ## Usage
 
 Head over to [slt.**readthedocs**.io](https://slt.readthedocs.io) to see the detailed usage in Python, CLI and gradio GUI.
-See the [*test cases*](https://github.com/sign-language-translator/sign-language-translator/blob/main/tests) or the [*notebooks* repo](https://github.com/sign-language-translator/notebooks) to see the internal code in action.
+See the [_test cases_](https://github.com/sign-language-translator/sign-language-translator/blob/main/tests) or the [_notebooks_ repo](https://github.com/sign-language-translator/notebooks) to see the internal code in action.
 
 ### Web GUI
 
@@ -245,8 +206,8 @@ sign_3.save_animation("how-are-you.gif", overwrite=True)
 ```
 
 | ![this very good is](https://github.com/sign-language-translator/sign-language-translator/assets/118578823/7f4ff312-df03-4b11-837b-5fb895c9f08e) | <picture><source media="(prefers-color-scheme: dark)" srcset="https://github.com/user-attachments/assets/4d54a197-d723-4cc4-a3ba-cae98e681003" /><source media="(prefers-color-scheme: light)" srcset="https://github.com/user-attachments/assets/45e71098-7a94-4a9e-ad24-1773369b65d5" /><img alt="how are you (landmark 3d plot)" src="https://github.com/user-attachments/assets/45e71098-7a94-4a9e-ad24-1773369b65d5" /></picture> |
-| :-: | :-: |
-| "یہ بہت اچھا ہے۔" (this-very-good-is) | "कैसे हैं आप?" (how-are-you) |
+| :----------------------------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+|                                                      "یہ بہت اچھا ہے۔" (this-very-good-is)                                                       |                                                                                                                                                                                                      "कैसे हैं आप?" (how-are-you)                                                                                                                                                                                                      |
 
 </br>
 
@@ -314,11 +275,11 @@ Available Functions:
 - Token Classification (Tagging)
 - Word Sense Disambiguation
 
-| Name | Vocabulary | Ambiguous tokens | Signs |
-| - | - | - | - |
-| [English](https://github.com/sign-language-translator/sign-language-translator/blob/main/sign_language_translator/languages/text/english.py) | 1591 words+phrases | 167 | 776 |
-| [Urdu](https://github.com/sign-language-translator/sign-language-translator/blob/main/sign_language_translator/languages/text/urdu.py)    | 2080 words+phrases | 227 | 776 |
-| [Hindi](https://github.com/sign-language-translator/sign-language-translator/blob/main/sign_language_translator/languages/text/hindi.py)   |  137 words+phrases |   5 |  84 |
+| Name                                                                                                                                         | Vocabulary         | Ambiguous tokens | Signs |
+| -------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ | ---------------- | ----- |
+| [English](https://github.com/sign-language-translator/sign-language-translator/blob/main/sign_language_translator/languages/text/english.py) | 1591 words+phrases | 167              | 776   |
+| [Urdu](https://github.com/sign-language-translator/sign-language-translator/blob/main/sign_language_translator/languages/text/urdu.py)       | 2080 words+phrases | 227              | 776   |
+| [Hindi](https://github.com/sign-language-translator/sign-language-translator/blob/main/sign_language_translator/languages/text/hindi.py)     | 137 words+phrases  | 5                | 84    |
 
 </details>
 
@@ -331,9 +292,9 @@ Available Functions:
 - Sentence restructuring according to grammar
 - Sentence simplification (drop stopwords)
 
-| Name | Vocabulary | Dataset | Parallel Corpus |
-| - | - | - | :-: |
-| [Pakistan Sign Language](https://github.com/sign-language-translator/sign-language-translator/blob/main/sign_language_translator/languages/sign/pakistan_sign_language.py) | 776 | 23 hours | [details](https://github.com/sign-language-translator/sign-language-datasets#datasets) |
+| Name                                                                                                                                                                       | Vocabulary | Dataset  |                                    Parallel Corpus                                     |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | -------- | :------------------------------------------------------------------------------------: |
+| [Pakistan Sign Language](https://github.com/sign-language-translator/sign-language-translator/blob/main/sign_language_translator/languages/sign/pakistan_sign_language.py) | 776        | 23 hours | [details](https://github.com/sign-language-translator/sign-language-datasets#datasets) |
 
 </details>
 
@@ -379,9 +340,10 @@ Available Functions:
 
 <!-- [Available Trained models]() -->
 
-| Name                                                                                                                                                                                                 | Architecture                                                                                                               | Description                                                                                       | Input format                                                 | Output format                                |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ | -------------------------------------------- |
-| [MediaPipe Landmarks<br>(Pose + Hands)](https://github.com/sign-language-translator/sign-language-translator/blob/main/sign_language_translator/models/video_embedding/mediapipe_landmarks_model.py) | CNN based pipelines. See Here: [Pose](https://arxiv.org/pdf/2006.10204.pdf), [Hands](https://arxiv.org/pdf/2006.10214.pdf) | Encodes videos into pose vectors (3D world or 2D image) depicting the movements of the performer. | List of numpy images<br/>(n_frames, height, width, channels) | torch.Tensor<br/>(n_frames, n_landmarks * 5) |
+| Name                                                                                                                                                                                                 | Architecture                                                                                                               | Description                                                                                       | Input format                                                 | Output format                                 |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ | --------------------------------------------- |
+| [MediaPipe Landmarks<br>(Pose + Hands)](https://github.com/sign-language-translator/sign-language-translator/blob/main/sign_language_translator/models/video_embedding/mediapipe_landmarks_model.py) | CNN based pipelines. See Here: [Pose](https://arxiv.org/pdf/2006.10204.pdf), [Hands](https://arxiv.org/pdf/2006.10214.pdf) | Encodes videos into pose vectors (3D world or 2D image) depicting the movements of the performer. | List of numpy images<br/>(n_frames, height, width, channels) | torch.Tensor<br/>(n_frames, n_landmarks \* 5) |
+
 </details>
 
 <details>
@@ -393,6 +355,7 @@ Available Functions:
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------- | --------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------------------------- |
 | [N-Gram Langauge Model](https://github.com/sign-language-translator/sign-language-translator/blob/main/sign_language_translator/models/language_models/ngram_language_model.py)                  | Hash Tables                     | Predicts the next token based on learned statistics about previous N tokens.                        | List of tokens                                              | (token, probability)                                                          |
 | [Transformer Language Model](https://github.com/sign-language-translator/sign-language-translator/blob/main/sign_language_translator/models/language_models/transformer_language_model/model.py) | Decoder-only Transformers (GPT) | Predicts next token using query-key-value attention, linear transformations and soft probabilities. | torch.Tensor<br/>(batch, token_ids)<br/><br/>List of tokens | torch.Tensor<br/>(batch, token_ids, vocab_size)<br/><br/>(token, probability) |
+
 </details>
 
 <details>
@@ -427,10 +390,10 @@ To create your own sign language translator, you'll need these essential compone
 <details>
 <summary>Data Collection</summary>
 
-   1. Gather a collection of [dictionary videos](https://github.com/sign-language-translator/sign-language-datasets/releases/tag/v0.0.2) (word level) featuring individuals performing sign language gestures. These can be obtained from schools & organizations for the deaf. You should record multiple people perform the same sign to capture various *accents* of the sign. Set up multiple cameras in different locations in parallel to further augment the data.
-   2. Prepare a [JSON file](https://github.com/sign-language-translator/sign-language-datasets/blob/main/parallel_texts/pk-dictionary-mapping.json) that maps dictionary video file names to corresponding text language words & phrases that are synonymous with the gestures.
-   3. Prepare a synthetic data [parallel corpus](https://github.com/sign-language-translator/sign-language-datasets/blob/main/parallel_texts/pk-synthetic-sentence-mapping.json) containing text language sentences and sequences of sign language video filenames. You can use langauge models to generate these sentences & sequences.
-   4. Prepare a dataset of sign language [sentence videos](https://github.com/sign-language-translator/sign-language-datasets/releases/tag/v0.0.3) that are labeled with [translations & glosses](https://github.com/sign-language-translator/sign-language-datasets/blob/main/parallel_texts/pk-sentence-mapping.json) in multiple text languages.
+1.  Gather a collection of [dictionary videos](https://github.com/sign-language-translator/sign-language-datasets/releases/tag/v0.0.2) (word level) featuring individuals performing sign language gestures. These can be obtained from schools & organizations for the deaf. You should record multiple people perform the same sign to capture various _accents_ of the sign. Set up multiple cameras in different locations in parallel to further augment the data.
+2.  Prepare a [JSON file](https://github.com/sign-language-translator/sign-language-datasets/blob/main/parallel_texts/pk-dictionary-mapping.json) that maps dictionary video file names to corresponding text language words & phrases that are synonymous with the gestures.
+3.  Prepare a synthetic data [parallel corpus](https://github.com/sign-language-translator/sign-language-datasets/blob/main/parallel_texts/pk-synthetic-sentence-mapping.json) containing text language sentences and sequences of sign language video filenames. You can use langauge models to generate these sentences & sequences.
+4.  Prepare a dataset of sign language [sentence videos](https://github.com/sign-language-translator/sign-language-datasets/releases/tag/v0.0.3) that are labeled with [translations & glosses](https://github.com/sign-language-translator/sign-language-datasets/blob/main/parallel_texts/pk-sentence-mapping.json) in multiple text languages.
 
 </details>
 </li>
@@ -439,11 +402,11 @@ To create your own sign language translator, you'll need these essential compone
 <details>
 <summary>Language Processing</summary>
 
-   1. Implement a subclass of `slt.languages.TextLanguage`:
-      - Tokenize your text language and assign appropriate tags to the tokens for streamlined processing.
-   2. Create a subclass of `slt.languages.SignLanguage`:
-      - Map text tokens to video filenames using the provided JSON data.
-      - Rearrange the sequence of video filenames to align with the grammar and structure of sign language.
+1.  Implement a subclass of `slt.languages.TextLanguage`:
+    - Tokenize your text language and assign appropriate tags to the tokens for streamlined processing.
+2.  Create a subclass of `slt.languages.SignLanguage`:
+    - Map text tokens to video filenames using the provided JSON data.
+    - Rearrange the sequence of video filenames to align with the grammar and structure of sign language.
 
 </details>
 </li>
@@ -452,8 +415,8 @@ To create your own sign language translator, you'll need these essential compone
 <details>
 <summary>Rule-Based Translation</summary>
 
-   1. Pass instances of your classes from the previous step to `slt.models.ConcatenativeSynthesis` class to obtain a rule-based translator object.
-   2. Construct sentences in your text language and use the rule-based translator to generate sign language translations. (You can use our language models to generate such texts.)
+1.  Pass instances of your classes from the previous step to `slt.models.ConcatenativeSynthesis` class to obtain a rule-based translator object.
+2.  Construct sentences in your text language and use the rule-based translator to generate sign language translations. (You can use our language models to generate such texts.)
 
 </details>
 </li>
@@ -462,8 +425,8 @@ To create your own sign language translator, you'll need these essential compone
 <details>
 <summary>Deep Learning Model Fine-Tuning</summary>
 
-   1. Utilize the (synthetic & real) sign language videos and corresponding text sentences from the previous step.
-   2. Apply our training pipeline to fine-tune a chosen model for improved accuracy and translation quality.
+1.  Utilize the (synthetic & real) sign language videos and corresponding text sentences from the previous step.
+2.  Apply our training pipeline to fine-tune a chosen model for improved accuracy and translation quality.
 
 </details>
 </li>
@@ -589,7 +552,7 @@ See our datasets & conventions [here](https://github.com/sign-language-translato
 
 - Contribute by scraping, compiling, and centralizing video datasets.
 - Help with labeling [word mapping datasets](https://github.com/sign-language-translator/sign-language-datasets/tree/main/parallel_texts).
-- Establish connections with Academies for the Deaf to collaboratively develop standardized *sign language grammar* and integrate it into the rule-based translators.
+- Establish connections with Academies for the Deaf to collaboratively develop standardized _sign language grammar_ and integrate it into the rule-based translators.
 
 </details>
 
@@ -748,7 +711,7 @@ Count total number of **lines of code** (Package: **14,034** + Tests: **2,928**)
 git ls-files | grep '\.py' | xargs wc -l
 ```
 
-**Just for *fun* 🙃**
+**Just for _fun_ 🙃**
 
 ```text
 Q: What was the deaf student's favorite course?
